@@ -66,12 +66,17 @@ int ex(nodeType *p) {
         default:
             ex(p->opr.op[0]);
             ex(p->opr.op[1]);
+	    printf("\tpopl\t%%ebx\n");
+	    printf("\tpopl\t%%eax\n");
             switch(p->opr.oper) {
 	    case GCD:   printf("\tgcd\n"); break;
-            case '+':   printf("\tadd\n"); break;
-            case '-':   printf("\tsub\n"); break; 
-            case '*':   printf("\tmul\n"); break;
-            case '/':   printf("\tdiv\n"); break;
+            case '+':   printf("\tadd\t %%ebx, %%eax\n"); break;
+            case '-':   printf("\tsub\t %%ebx, %%eax\n"); break; 
+            case '*':   printf("\tmul\t %%ebx\n"); break;
+            case '/':   
+		printf("\tcltd\n");
+		printf("\tdiv %%ebx\n");
+		 break;
             case '<':   printf("\tcompLT\n"); break;
             case '>':   printf("\tcompGT\n"); break;
             case GE:    printf("\tcompGE\n"); break;
@@ -79,6 +84,7 @@ int ex(nodeType *p) {
             case NE:    printf("\tcompNE\n"); break;
             case EQ:    printf("\tcompEQ\n"); break;
             }
+	    printf("\tpushl\t\%%eax\n");
         }
     }
     return 0;

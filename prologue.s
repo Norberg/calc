@@ -27,7 +27,7 @@ w:	.skip	4
 x:	.skip	4
 y:	.skip	4
 z:	.skip	4
-FINT:	.string "%d"
+FINT:	.string "%d\n"
 	.text
 	.global main
 main:
