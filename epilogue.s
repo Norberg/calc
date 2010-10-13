@@ -1,1 +1,1 @@
--- EPILOGUE --
+	call exit
