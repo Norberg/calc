@@ -1,0 +1,13 @@
+print fact 0 - 1;
+print fact 1 - 1;
+print fact 2 - 2;
+print fact 3 - 6;
+print fact 4 - 24;
+print fact 5 - 120;
+print fact 6 - 720;
+print fact 7 - 5040;
+print fact 8 - 40320;
+print fact 9 - 362880;
+print fact 10 - 3628800;
+print fact 11 - 39916800;
+
