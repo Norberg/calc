@@ -20,7 +20,8 @@ int ex(nodeType *p) {
         case WHILE:
             printf("L%03d:\n", lbl1 = lbl++);
             ex(p->opr.op[0]);
-            printf("\tjz\tL%03d\n", lbl2 = lbl++);
+	    printf("\tpopl\t%%ecx\n");
+            printf("\tjecxz\tL%03d\n", lbl2 = lbl++);
             ex(p->opr.op[1]);
             printf("\tjmp\tL%03d\n", lbl1);
             printf("L%03d:\n", lbl2);
@@ -29,7 +30,8 @@ int ex(nodeType *p) {
             ex(p->opr.op[0]);
             if (p->opr.nops > 2) {
                 /* if else */
-                printf("\tjz\tL%03d\n", lbl1 = lbl++);
+		printf("\tpopl\t%%ecx\n");
+                printf("\tjecxz\tL%03d\n", lbl1 = lbl++);
                 ex(p->opr.op[1]);
                 printf("\tjmp\tL%03d\n", lbl2 = lbl++);
                 printf("L%03d:\n", lbl1);
@@ -37,7 +39,8 @@ int ex(nodeType *p) {
                 printf("L%03d:\n", lbl2);
             } else {
                 /* if */
-                printf("\tjz\tL%03d\n", lbl1 = lbl++);
+		printf("\tpopl\t%%ecx\n");
+                printf("\tjecxz\tL%03d\n", lbl1 = lbl++);
                 ex(p->opr.op[1]);
                 printf("L%03d:\n", lbl1);
             }
@@ -82,7 +85,11 @@ int ex(nodeType *p) {
             case GE:    printf("\tcompGE\n"); break;
             case LE:    printf("\tcompLE\n"); break;
             case NE:    printf("\tcompNE\n"); break;
-            case EQ:    printf("\tcompEQ\n"); break;
+            case EQ:    
+		printf("\tmovl\t$0, %%ecx\n"); 
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsetne\t%%cl\n"); 
+		break;
             }
 	    printf("\tpushl\t\%%eax\n");
         }

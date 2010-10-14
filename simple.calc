@@ -3,7 +3,31 @@ b= a + 12;
 c= a - 12;
 d= 12*10;
 e= 110/10;
-print b;
+z = 1;
+if (z == 1)
+{
+	print 4242;
+}
+else
+{
+	print 20;
+}
+if (z == 4)
+{
+	print 1337;
+	
+}
+
+if (b)
+{
+	print 1000;
+}
+a = 10;
+while (a)
+{
+	print a;
+	a = a - 1;
+}
 print c;
 print d;
 print e;
