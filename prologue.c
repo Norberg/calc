@@ -136,6 +136,47 @@ void GREATER()
 		push(0);
 	}
 }
+void gcd()
+{
+int a = pop();
+int b = pop();
+
+while(a != b) {
+  if(a > b) {
+    a=a-b;
+  } else {
+    b=b-a;
+  }
+}
+
+push(a);
+
+}
+void fact() 
+{
+	int a = pop();
+	int b = a;
+	while (b > 0)
+	{
+		a = a * b;
+		b--;
+	}
+	push(a);
+}
+void lntwo()
+{
+	int a = pop();
+	int b = 1;
+	while(b < a)
+	{
+		b = b * 2;
+	}
+	if(a == 0)
+	{
+		b = 1;
+	}
+	push(b);
+}
 
 int main() 
 {
