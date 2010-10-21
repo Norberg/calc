@@ -154,12 +154,16 @@ push(a);
 }
 void fact() 
 {
-	int a = pop();
-	int b = a;
+	int b = pop();
+	int a = 1;
 	while (b > 0)
 	{
 		a = a * b;
 		b--;
+	}
+	if(a == 0)
+	{
+		a = 1;
 	}
 	push(a);
 }
@@ -167,15 +171,13 @@ void lntwo()
 {
 	int a = pop();
 	int b = 1;
+	int x = 0;
 	while(b < a)
 	{
 		b = b * 2;
+		x++;
 	}
-	if(a == 0)
-	{
-		b = 1;
-	}
-	push(b);
+	push(x);
 }
 
 int main() 

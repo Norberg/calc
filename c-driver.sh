@@ -23,5 +23,5 @@ cat prologue.c > $cFile
 cat epilogue.c >> $cFile
 
 # Compile the C file with gcc
-gcc $cFile -o$fileName -ggdb
+gcc $cFile -o$fileName
 
