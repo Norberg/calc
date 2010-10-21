@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <lib.s>
 	.data
 a:	.skip	4
 b:	.skip	4

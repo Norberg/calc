@@ -2,17 +2,23 @@ a=30;
 b= a + 12;
 c= a - 12;
 d= 12*10;
-e= 110/10;
-z = 1;
-if (z == 1)
+e= 110*a/(10*213);
+z = -23/10;
+print z;
+if (e != 1)
 {
-	print 4242;
+	print e;
 }
 else
 {
 	print 20;
 }
-if (z == 4)
+if (2 != z)
+{
+	print 1388;
+	
+}
+if (z <= 2)
 {
 	print 1337;
 	

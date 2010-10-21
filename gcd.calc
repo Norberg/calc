@@ -9,5 +9,7 @@ while(a != b) {
 }
 print a;
 
+a=732;
+b=2684;
 print a gcd b;
 

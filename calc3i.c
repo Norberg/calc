@@ -57,7 +57,9 @@ int ex(nodeType *p) {
             break;
         case UMINUS:
             ex(p->opr.op[0]);
-            printf("\tneg\n");
+            printf("\tpopl %%eax\n");
+            printf("\tneg %%eax\n");
+            printf("\tpushl %%eax\n");
             break;
 	case FACT:
   	    ex(p->opr.op[0]);
@@ -65,21 +67,28 @@ int ex(nodeType *p) {
 	    break;
 	case LNTWO:
 	    ex(p->opr.op[0]);
-	    printf("\lntwo\n");
+	    printf("\tntwo\n");
 	    break;
         default:
             ex(p->opr.op[0]);
             ex(p->opr.op[1]);
-	    printf("\tpopl\t%%ebx\n");
-	    printf("\tpopl\t%%eax\n");
+            if (p->opr.oper == 59) {
+		/* Broken operator, dont exist, why do we even get this?*/
+	    }
+            else if (p->opr.oper != GCD) {
+	    	printf("\tpopl\t%%ebx\n");
+	    	printf("\tpopl\t%%eax\n");
+	    }
             switch(p->opr.oper) {
-	    case GCD:   printf("\tgcd\n"); break;
+	    case GCD:  
+		printf("\tcall gcd\n");
+		break;
             case '+':   printf("\tadd\t %%ebx, %%eax\n"); break;
             case '-':   printf("\tsub\t %%ebx, %%eax\n"); break; 
             case '*':   printf("\tmul\t %%ebx\n"); break;
             case '/':   
 		printf("\tcltd\n");
-		printf("\tdiv %%ebx\n");
+		printf("\tidiv %%ebx\n");
 		 break;
             case '<':
 		printf("\tmovl\t$0, %%ecx\n");
@@ -117,6 +126,9 @@ int ex(nodeType *p) {
 		printf("\tcmpl\t%%eax, %%ebx\n"); 
 		printf("\tsete\t%%cl\n"); 
 	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+             default:
+		printf("/*unknown operator: %d*/\n", p->opr.oper);
 		return 0;
             }
 	    printf("\tpushl\t\%%eax\n");
