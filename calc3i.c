@@ -21,7 +21,8 @@ int ex(nodeType *p) {
             printf("L%03d:\n", lbl1 = lbl++);
             ex(p->opr.op[0]);
 	    printf("\tpopl\t%%ecx\n");
-            printf("\tjecxz\tL%03d\n", lbl2 = lbl++);
+	    printf("\ttest\t%%cx, %%cx\n");
+            printf("\tje\tL%03d\n", lbl2 = lbl++);
             ex(p->opr.op[1]);
             printf("\tjmp\tL%03d\n", lbl1);
             printf("L%03d:\n", lbl2);
@@ -80,16 +81,43 @@ int ex(nodeType *p) {
 		printf("\tcltd\n");
 		printf("\tdiv %%ebx\n");
 		 break;
-            case '<':   printf("\tcompLT\n"); break;
-            case '>':   printf("\tcompGT\n"); break;
-            case GE:    printf("\tcompGE\n"); break;
-            case LE:    printf("\tcompLE\n"); break;
-            case NE:    printf("\tcompNE\n"); break;
-            case EQ:    
-		printf("\tmovl\t$0, %%ecx\n"); 
+            case '<':
+		printf("\tmovl\t$0, %%ecx\n");
+		printf("\t\t%%eax, %%ebx\n"); 
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsetg\t%%cl\n"); 
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+            case '>':  
+		printf("\tmovl\t$0, %%ecx\n");
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsetl\t%%cl\n"); 
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+            case GE:
+		printf("\tmovl\t$0, %%ecx\n");
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsetle\t%%cl\n"); 
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+            case LE: 
+		printf("\tmovl\t$0, %%ecx\n");
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsetge\t%%cl\n"); 
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+            case NE:    
+		printf("\tmovl\t$0, %%ecx\n");
 		printf("\tcmpl\t%%eax, %%ebx\n"); 
 		printf("\tsetne\t%%cl\n"); 
-		break;
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
+            case EQ:    
+		printf("\tmovl\t$0, %%ecx\n");
+		printf("\tcmpl\t%%eax, %%ebx\n"); 
+		printf("\tsete\t%%cl\n"); 
+	    	printf("\tpushl\t\%%ecx\n");
+		return 0;
             }
 	    printf("\tpushl\t\%%eax\n");
         }
