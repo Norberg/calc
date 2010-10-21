@@ -64,10 +64,12 @@ int ex(nodeType *p) {
 	case FACT:
   	    ex(p->opr.op[0]);
 	    printf("\tcall fact\n");
+	    printf("\tpushl %%eax\n");
 	    break;
 	case LNTWO:
 	    ex(p->opr.op[0]);
 	    printf("\tcall lntwo\n");
+	    printf("\tpushl %%eax\n");
 	    break;
         default:
             ex(p->opr.op[0]);

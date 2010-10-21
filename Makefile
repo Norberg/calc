@@ -10,4 +10,4 @@ c-backend:
 	flex calc3.l
 	gcc -c y.tab.c lex.yy.c
 	gcc y.tab.o lex.yy.o calc3c.c -o calc3c
-	
+all: x86-backend c-backend	

@@ -37,3 +37,4 @@ while (a)
 print c;
 print d;
 print e;
+print fact 5;
