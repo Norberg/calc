@@ -39,7 +39,7 @@ int ex(nodeType *p) {
                 printf("L%03d:\n", lbl2);
             } else {
                 /* if */
-		printf("\tif (pop())\n");
+		printf("\tif (!pop())\n");
                 printf("\tgoto\tL%03d;\n", lbl1 = lbl++);
                 ex(p->opr.op[1]);
                 printf("L%03d:\n", lbl1);
