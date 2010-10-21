@@ -1,12 +1,15 @@
 #include<stdio.h>
 
+int current = -1;
+int stack[32];
+
 //Stack functions
-void push(int top, int *stack, int *current)
+void push(int top)
 {
 	stack[*current+1] = top;
 	*current = *current + 1;
 }
-int pop(int *stack, int *current) 
+int pop() 
 {
 	int temp = -1;
 	
@@ -21,6 +24,34 @@ int pop(int *stack, int *current)
 	}
 
 	return temp;
+}
+void add() 
+{
+	int x = pop();
+	int y = pop();
+	push(x+y);
+}
+void sub()
+{
+	int x = pop();
+	int y = pop();
+	push(x-y);
+}
+void print()
+{
+	printf("%d", pop());
+}
+void div()
+{
+	int x = pop();
+	int y = pop();
+	push(x/y);
+}
+void mul()
+{
+	int x = pop();
+	int y = pop();
+	push(x*y);
 }
 
 int main() {
