@@ -35,7 +35,7 @@ void sub()
 {
 	int x = pop();
 	int y = pop();
-	push(x-y);
+	push(y-x);
 }
 void print()
 {

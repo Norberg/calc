@@ -63,11 +63,11 @@ int ex(nodeType *p) {
             break;
 	case FACT:
   	    ex(p->opr.op[0]);
-	    printf("\tfact\n");
+	    printf("\tcall fact\n");
 	    break;
 	case LNTWO:
 	    ex(p->opr.op[0]);
-	    printf("\tntwo\n");
+	    printf("\tcall lntwo\n");
 	    break;
         default:
             ex(p->opr.op[0]);
