@@ -24,3 +24,8 @@ int pop(int *stack, int *current)
 }
 
 int main() {
+
+	int stack[32];
+	int current = -1;
+	int a,b,c,d,e,f,g,h,i,j,l,k,m,n,o,p,q,r,s,t,u,v,w,x,y,z;
+	int ecx;
