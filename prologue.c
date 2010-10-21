@@ -53,6 +53,89 @@ void mul()
 	int y = pop();
 	push(x*y);
 }
+void neg()
+{
+	int x = pop();
+	push(-x);
+}
+void NE()
+{
+	int x = pop();
+	int y = pop();
+	if (x != y)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
+void EQ() 
+{
+	int x = pop();
+	int y = pop();
+	if (x == y)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
+void LE() 
+{
+	int x = pop();
+	int y = pop();
+	if (y <= x)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
+void GE() 
+{
+	int x = pop();
+	int y = pop();
+	if (y >= x)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
+void LESS() 
+{
+	int x = pop();
+	int y = pop();
+	if (y < x)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
+void GREATER() 
+{
+	int x = pop();
+	int y = pop();
+	if (y > x)
+	{
+		push(1);
+	}
+	else
+	{
+		push(0);
+	}
+}
 
 int main() 
 {
