@@ -1,3 +1,9 @@
+	.data
+	.text
+	.global fact
+	.global lntwo
+	.global gcd
+
 /* fact  */
 
 fact:
