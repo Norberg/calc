@@ -1,12 +1,3 @@
-#include <stdio.h>
-
-	.data
-FINT:	.string "%d\n"
-	.text
-	.global main
-
-
-
 /* fact  */
 
 fact:
@@ -49,18 +40,3 @@ l5:  	sub  	%ebx, %eax
 l6:
       ret            
 
-
-main: 
-	/*
-	pushl 	$36
-	pushl	$24
-	call 	gcd
-	pushl 	%ebx
-	push 	$FINT
-	call 	printf */
-	pushl 	$4
-	call	fact
-	pushl 	%eax
-	push 	$FINT
-	call 	printf
-	call 	exit 
