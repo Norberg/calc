@@ -1,0 +1,4 @@
+print lntwo 32;
+print lntwo 64;
+print lntwo 63;
+print lntwo 65;
