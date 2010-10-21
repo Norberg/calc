@@ -23,5 +23,5 @@ cat prologue.s > $assemblyFile
 cat epilogue.s >> $assemblyFile
 
 # Compile the assembly file with gcc
-gcc $assemblyFile -o$fileName
+gcc $assemblyFile lib.s -o$fileName
 
